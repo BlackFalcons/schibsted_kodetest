@@ -1,0 +1,14 @@
+{
+    "name": "falcon/power_api",
+    "autoload": {
+        "psr-4": {
+            "Falcon\\PowerApi\\": "src/"
+        }
+    },
+    "require": {
+        "slim/slim": "4.*",
+        "slim/psr7": "^1.6",
+        "selective/basepath": "^2.1",
+        "ramsey/uuid": "^4.7"
+    }
+}
