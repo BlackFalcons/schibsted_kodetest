@@ -60,7 +60,7 @@ $app->get('/api/posts/{id}', function (Request $request, Response $response, $ar
     $postId = $args['id'];
     $pdo = establishDBConnection();
 
-    $getPostSQL = "SELECT title, content FROM posts WHERE id = :postId";
+    $getPostSQL = "SELECT userId, title, content FROM posts WHERE id = :postId";
     $statement = $pdo->prepare($getPostSQL);
     $statement->bindParam(':postId', $postId);
     $statement->execute();
@@ -78,6 +78,7 @@ $app->get('/api/posts/{id}', function (Request $request, Response $response, $ar
     }
 
     $responseData = [
+        'userId' => $post['userId'],
         'title' => $post['title'],
         'content' => $post['content']
     ];
@@ -99,7 +100,7 @@ $app->get('/api/posts', function (Request $request, Response $response) {
     // Fetch posts based on pagination parameters from the database
     $pdo = establishDBConnection();
 
-    $getPostsSQL = "SELECT id, title, content FROM posts LIMIT :limit OFFSET :offset";
+    $getPostsSQL = "SELECT id, userId, title, content FROM posts LIMIT :limit OFFSET :offset";
     $statement = $pdo->prepare($getPostsSQL);
     $statement->bindValue(':limit', (int)$limit, PDO::PARAM_INT);
     $statement->bindValue(':offset', (int)$offset, PDO::PARAM_INT);
