@@ -99,7 +99,7 @@ $app->get('/api/posts', function (Request $request, Response $response) {
     // Fetch posts based on pagination parameters from the database
     $pdo = establishDBConnection();
 
-    $getPostsSQL = "SELECT title, content FROM posts LIMIT :limit OFFSET :offset";
+    $getPostsSQL = "SELECT id, title, content FROM posts LIMIT :limit OFFSET :offset";
     $statement = $pdo->prepare($getPostsSQL);
     $statement->bindValue(':limit', (int)$limit, PDO::PARAM_INT);
     $statement->bindValue(':offset', (int)$offset, PDO::PARAM_INT);
