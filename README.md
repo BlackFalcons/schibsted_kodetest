@@ -8,7 +8,7 @@ PowerPoster is a project that allows you to create and retrieve posts through an
 
 2. **Apache Configuration**: Make sure `mod_rewrite` is enabled in the Apache configuration. Open your Apache configuration file (e.g., `httpd.conf` or `apache2.conf`).
 
-3. **Database**: Install MariaDB and create a database for the project. Once the database is created, run the SQL query provided in the `init_database.sql` file to initialize the necessary tables.
+3. **Database**: Install MariaDB and ensure it is running. The necessary database and tables will be created automatically when you run the SQL query provided in the `init_database.sql` file.
 
 Congratulations! You have successfully set up the PowerPoster project.
 
