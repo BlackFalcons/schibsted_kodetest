@@ -20,6 +20,15 @@ The PowerPoster project provides the following API endpoints:
 
 This endpoint allows you to create a new post by sending a POST request to the specified URL. Provide the title and content of the post in the request body as a JSON object.
 
+#### Request Body Example
+
+```json
+{
+  "title": "Sample Title",
+  "content": "Sample content"
+}
+```
+
 ### Get a Post by ID
 
 **Endpoint**: `GET /api/posts/{id}`
