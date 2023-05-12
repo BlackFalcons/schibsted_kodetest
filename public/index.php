@@ -34,7 +34,7 @@ $app->post('/api/posts', function (Request $request, Response $response) {
 
     if (!empty($missingFields)) {
         // Return an error response with a 400 Bad Request status code
-        $errorMessage = 'The following field(s) are required: ' . implode(', ', $missingFields);
+        $errorMessage = 'You are missing the following required field(s): ' . implode(', ', $missingFields);
         $response->getBody()->write(json_encode(['error' => $errorMessage]));
         return $response->withHeader('Content-Type', 'application/json')->withStatus(400);
     }
