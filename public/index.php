@@ -50,7 +50,14 @@ $app->post('/api/posts', function (Request $request, Response $response) {
     $statement->bindParam(':content', $content);
     $statement->execute();
 
-    $response->getBody()->write(json_encode(['message' => 'Post created successfully']));
+    $postId = $pdo->lastInsertId();
+
+    $responseData = [
+        'message' => 'Post created successfully',
+        'id' => $postId
+    ];
+
+    $response->getBody()->write(json_encode($responseData));
     return $response->withHeader('Content-Type', 'application/json')->withStatus(201);
 });
 
