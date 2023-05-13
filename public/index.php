@@ -22,8 +22,6 @@ $app->post('/api/posts', function (Request $request, Response $response) {
     $jsonData = $request->getBody()->getContents();
     $postData = json_decode($jsonData, true);
 
-    $pdo = establishDBConnection();
-
     $missingFields = [];
     if (empty($postData['title'])) {
         $missingFields[] = 'title';
@@ -38,6 +36,8 @@ $app->post('/api/posts', function (Request $request, Response $response) {
         $response->getBody()->write(json_encode(['error' => $errorMessage]));
         return $response->withHeader('Content-Type', 'application/json')->withStatus(400);
     }
+
+    $pdo = establishDBConnection();
 
     $userId = Uuid::uuid4()->toString();
     $title = $postData['title'];
