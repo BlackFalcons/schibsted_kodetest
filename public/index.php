@@ -11,7 +11,7 @@ require_once __DIR__ . '/../src/config/db.php';
 $app = AppFactory::create();
 $app->add(new BasePathMiddleware($app));
 
-$app->get('/', function (Request $request, Response $response, $args) {
+$app->get('/', function (Request $request, Response $response, array $args) {
     $response->getBody()->write("Hello there!");
     return $response;
 });
@@ -63,7 +63,7 @@ $app->post('/api/posts', function (Request $request, Response $response) {
 
 
 // Define a route to fetch a post by ID
-$app->get('/api/posts/{id}', function (Request $request, Response $response, $args) {
+$app->get('/api/posts/{id}', function (Request $request, Response $response, array $args) {
     $postId = $args['id'];
     $pdo = establishDBConnection();
 
